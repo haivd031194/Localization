@@ -22,9 +22,9 @@ namespace Zitga.LocalizeTools.Tutorials
 
         void Awake ()
         {
-            this.localization = Localization.Current;
+            localization = Localization.Current;
             
-            this.localization.CultureInfo = Locale.GetCultureInfoByLanguage(SystemLanguage.English);
+            localization.CultureInfo = Locale.GetCultureInfoByLanguage(SystemLanguage.English);
             
             InitButton();
 
@@ -38,7 +38,7 @@ namespace Zitga.LocalizeTools.Tutorials
                 UpdateText(sender, e).Forget();
             };
 
-            this.localization.CultureInfoChanged += languageChanged;
+            localization.CultureInfoChanged += languageChanged;
         }
 
         private void InitButton()
@@ -49,12 +49,12 @@ namespace Zitga.LocalizeTools.Tutorials
 
         private void OnClickEn()
         {
-            this.localization.CultureInfo = Locale.GetCultureInfoByLanguage(SystemLanguage.English);
+            localization.CultureInfo = Locale.GetCultureInfoByLanguage(SystemLanguage.English);
         }
 
         private void OnClickId()
         {
-            this.localization.CultureInfo = Locale.GetCultureInfoByLanguage(SystemLanguage.Indonesian);
+            localization.CultureInfo = Locale.GetCultureInfoByLanguage(SystemLanguage.Indonesian);
         }
         
         private async UniTaskVoid UpdateText(object sender, EventArgs e)

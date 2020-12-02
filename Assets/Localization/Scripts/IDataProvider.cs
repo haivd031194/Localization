@@ -1,4 +1,5 @@
 ﻿using Cysharp.Threading.Tasks;
+using Zitga.LocalizeTools.Tutorials;
 
 namespace Zitga.LocalizeTools
 {
@@ -6,7 +7,7 @@ namespace Zitga.LocalizeTools
     {
         void ClearData();
 
-        void Load();
+        UniTask<LanguageData> Load(string category);
 
         UniTask<string> Get(string category, string key);
     }

@@ -26,6 +26,7 @@ using System;
 using System.Globalization;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
+using Zitga.CsvTools;
 
 namespace Zitga.LocalizeTools
 {
@@ -68,7 +69,7 @@ namespace Zitga.LocalizeTools
         {
             this.cultureInfo = cultureInfo ?? Locale.GetCultureInfo();
 
-            this.dataProvider = new ResourceDataProvider();
+            this.dataProvider = new ResourceDataProvider(this);
         }
 
         public event EventHandler CultureInfoChanged
