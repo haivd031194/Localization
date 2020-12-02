@@ -7,9 +7,9 @@ namespace Zitga.LocalizeTools
 {
     public class ResourceDataProvider : IDataProvider
     {
-        private Localization localization;
+        private readonly Localization localization;
         
-        private Dictionary<string, LanguageData> data;
+        private readonly Dictionary<string, LanguageData> data;
         
         /// <summary>
         /// 

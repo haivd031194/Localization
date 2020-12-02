@@ -21,7 +21,7 @@ namespace Zitga.LocalizeTools.Tutorials
                     str.IndexOf(".csv", StringComparison.Ordinal) != -1)
                 {
                     TextAsset data = AssetDatabase.LoadAssetAtPath<TextAsset>(str);
-                    string assetFile = str.Replace(".csv", ".asset").Replace("Samples", "Resources");
+                    string assetFile = str.Replace(".csv", ".asset").Replace("Localization", "Resources/Localization");
                     LanguageData gm = AssetDatabase.LoadAssetAtPath<LanguageData>(assetFile);
                     if (gm == null)
                     {

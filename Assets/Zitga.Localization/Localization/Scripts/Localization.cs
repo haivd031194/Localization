@@ -69,27 +69,28 @@ namespace Zitga.LocalizeTools
         {
             this.cultureInfo = cultureInfo ?? Locale.GetCultureInfo();
 
-            this.dataProvider = new ResourceDataProvider(this);
+            dataProvider = new ResourceDataProvider(this);
         }
 
         public event EventHandler CultureInfoChanged
         {
-            add { lock (_lock) { this.cultureInfoChanged += value; } }
-            remove { lock (_lock) { this.cultureInfoChanged -= value; } }
+            add { lock (_lock) { cultureInfoChanged += value; } }
+            remove { lock (_lock) { cultureInfoChanged -= value; } }
         }
 
+        
         public CultureInfo CultureInfo
         {
-            get { return this.cultureInfo; }
+            get { return cultureInfo; }
             set
             {
-                if (value == null || (this.cultureInfo != null && this.cultureInfo.Equals(value)))
+                if (value == null || (cultureInfo != null && cultureInfo.Equals(value)))
                     return;
 
-                this.dataProvider.ClearData();
+                dataProvider.ClearData();
                 
-                this.cultureInfo = value;
-                this.OnCultureInfoChanged();
+                cultureInfo = value;
+                OnCultureInfoChanged();
             }
         }
 
@@ -102,7 +103,7 @@ namespace Zitga.LocalizeTools
         {
             try
             {
-                Debug.Log("language: " + this.cultureInfo.Name);
+                Debug.Log("language: " + cultureInfo.Name);
                 this.cultureInfoChanged?.Invoke(this, EventArgs.Empty);
             }
             catch (Exception)
