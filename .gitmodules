@@ -1,0 +1,3 @@
+[submodule "CsvReader"]
+	path = CsvReader
+	url = ../CsvReader.git
