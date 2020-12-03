@@ -1,5 +1,4 @@
 ﻿using Cysharp.Threading.Tasks;
-using Zitga.LocalizeTools.Tutorials;
 
 namespace Zitga.LocalizeTools
 {
