@@ -19,6 +19,11 @@ namespace Zitga.Localization
         public string saveFilePath;
         public List<string> codeList;
         public List<LanguageItem> itemList;
+
+        public string SaveFilePath
+        {
+            get => Application.dataPath + "/" + saveFilePath;
+        }
     }
 
     [Serializable]
@@ -127,12 +132,12 @@ namespace Zitga.Localization
 
         async UniTaskVoid DownloadLanguage()
         {
-            if (Directory.Exists(data.saveFilePath))
-                Directory.Delete(data.saveFilePath, true);
-            Directory.CreateDirectory(data.saveFilePath);
-
             await UniTask.SwitchToMainThread();
 
+            if (Directory.Exists(data.SaveFilePath))
+                Directory.Delete(data.SaveFilePath, true);
+            Directory.CreateDirectory(data.SaveFilePath);
+            
             for (int i = 0; i < data.itemList.Count; i++)
             {
                 var languageItem = data.itemList[i];
@@ -168,7 +173,7 @@ namespace Zitga.Localization
                     data.codeList.Contains(languageCode[1]))
                 {
                     langList.Add(new Language(i, languageCode[1]));
-                    var folderPath = data.saveFilePath + "\\" + languageCode[1];
+                    var folderPath = data.SaveFilePath + "\\" + languageCode[1];
                     if (Directory.Exists(folderPath) == false)
                     {
                         Directory.CreateDirectory(folderPath);
@@ -228,7 +233,7 @@ namespace Zitga.Localization
                 }
             }
 
-            var url = $"{data.saveFilePath}\\{languageCode}\\{popup}.csv";
+            var url = $"{data.SaveFilePath}\\{languageCode}\\{popup}.csv";
             SafeWriteAllText(url, contentWrite);
         }
 

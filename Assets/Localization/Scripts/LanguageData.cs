@@ -3,7 +3,6 @@ using System;
 using System.IO;
 using UnityEditor;
 #endif
-
 using UnityEngine;
 using Zitga.CsvTools;
 
@@ -44,7 +43,8 @@ namespace Zitga.Localization
                     gm.data.Clear();
                     foreach (var row in rows)
                     {
-                        gm.data.Add(row.key, row.value);
+                        if (string.IsNullOrEmpty(row.key) == false && string.IsNullOrEmpty(row.value) == false)
+                            gm.data.Add(row.key, row.value.Replace("\\n", "\n"));
                     }
 
                     EditorUtility.SetDirty(gm);
